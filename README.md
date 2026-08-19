@@ -1,14 +1,68 @@
 # About
 
-I work on infrastructure and platform engineering, mostly around Linux, Kubernetes, networking, observability, storage, and distributed systems. A significant part of my experience comes from operating blockchain infrastructure, although the underlying work is generally applicable to other stateful and distributed platforms.
+I design, build, and operate infrastructure for stateful and distributed
+systems. My background includes data-centre, telecommunications, and blockchain
+environments. My work spans bare metal and Linux hosts, cloud-native platforms,
+networking, storage, observability, and release automation.
 
-My background includes bare-metal systems, data-centre and telecommunications environments, Linux networking, and troubleshooting across both software and hardware layers. I have worked with physical servers, storage and network devices, virtualization, containers, proxies, databases, and Kubernetes clusters in self-hosted and cloud environments. I am comfortable working below the orchestration layer when a problem requires looking at operating-system behaviour, processes, memory, disks, network traffic, or hardware characteristics.
+I take ownership of work from architecture through production. I turn
+operational needs into reproducible systems, define trust and failure
+boundaries, automate delivery, and make upgrades and recovery testable. I stay
+with incidents until the root cause is understood, including when the
+investigation crosses application, protocol, operating system, network,
+storage, or hardware layers.
 
-I mostly use Ansible, Terraform, Helm, and container tooling to keep infrastructure reproducible and understandable. I also write operational services and automation in Python and Go. I apply software testing and QA practices to infrastructure work, including automated validation, isolated test environments, regression tests, CI checks, deployment gates, and verification of upgrade, migration, and failure scenarios.
+I expect infrastructure changes to be reviewable and repeatable, with a tested
+recovery path. I use isolated tests and deployment gates for upgrades,
+migrations, and failure paths. When a production issue can be reproduced, I add
+a regression check.
 
-Much of this work involves investigating problems that do not belong to a single component and tracing them through application, protocol, operating-system, network, storage, or infrastructure layers. When fixing such problems, I try to leave behind a reproducible test or automated check that prevents the same failure from being introduced again.
+I follow how cloud-native platforms and AI-assisted engineering are evolving.
+In AI systems, I focus on agent orchestration, controlled tool access,
+structured outputs, evaluation, and recovery. I treat model output as untrusted
+input and apply the same review, testing, and operational standards to AI
+components as to any other production dependency.
 
-Most of my production work is in private or employer-owned repositories. The public repositories and contributions linked below are selected examples rather than a complete work history.
+Most of my production work is private or employer-owned. The public work below
+provides concrete examples of how I design, build, and operate systems.
 
-* [Personal infrastructure projects](PROJECTS.md)
-* [Upstream work and public engineering contributions](UPSTREAM.md)
+## Personal projects
+
+These repositories started from practical problems. Many are used directly as
+operational tools or as reusable foundations for production infrastructure
+kept in private repositories.
+
+* [Debian Kernel Current](https://github.com/kogeler/dkc-linux) brings the newest
+  authenticated Debian Sid kernel to Debian 13 without replacing its userspace.
+  Its unattended release pipeline builds LLVM and ThinLTO packages, qualifies
+  them in KVM, and publishes a signed APT repository.
+* [k8s-lab](https://github.com/kogeler/k8s-lab) provides a self-hosted Cluster
+  API platform on one Debian or Ubuntu host, using unprivileged LXC/LXD
+  containers instead of virtual machines. It provisions declarative workload
+  clusters and tests the complete deployment path.
+* [Remote SSH MCP](https://github.com/kogeler/remote-ssh-mcp-server) lets coding
+  agents work on remote Linux systems without a raw terminal. It exposes
+  bounded operations over one fail-closed OpenSSH connection and moves large
+  files outside model context with verified, resumable transfers.
+* [mini-pig](https://github.com/kogeler/mini-pig-ansible-collection) is a
+  reusable Ansible base for self-hosted bare-metal systems. It covers host
+  setup, networking, VPN and proxy services, monitoring, and workloads, with a
+  firewall policy that coexists with Kubernetes, Docker, libvirt, and Podman.
+* [Joplin tools](PROJECTS.md#joplin-notes-and-knowledge-base-tools) connect a
+  Joplin knowledge base to Markdown and coding agents. They provide safe
+  two-way note sync, direct access through MCP and authenticated ChatGPT
+  Actions, and deterministic migration from OneNote.
+* [FMI for Home Assistant](https://github.com/kogeler/fmi-hass-custom) brings
+  Finnish weather forecasts, observations, lightning, and sea-level data into
+  Home Assistant. This maintained fork adds tested migrations, failure
+  isolation, compatibility checks, dependency review, and automated releases.
+
+[More personal projects and technical details](PROJECTS.md).
+
+## Upstream contributions
+
+My public upstream work includes production debugging, infrastructure
+automation, operational services, and SubQuery indexer fixes. Each entry is
+linked to the original issue or merged pull request.
+
+[Upstream work and public contributions](UPSTREAM.md).
